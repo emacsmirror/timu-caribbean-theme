@@ -119,11 +119,9 @@
 (defun timu-caribbean-do-scale (face-height)
   "Function for scaling the face to the FACE-HEIGHT.
 Uses `timu-caribbean-scale-faces' for conditional."
-  (cond
-   ((eq t timu-caribbean-scale-faces)
-    (list :height face-height))
-   ((eq nil timu-caribbean-scale-faces)
-    (list :height 1.0))))
+  (if (eq t timu-caribbean-scale-faces)
+      (list :height face-height)
+    (list :height 1.0)))
 
 (deftheme timu-caribbean
   "Color theme with cyan as a dominant color.
@@ -178,7 +176,7 @@ Sourced other themes to get information about font faces for packages.")
    `(bold ((,class (:weight bold))))
    `(bold-italic ((,class (:weight bold :slant italic))))
    `(bookmark-face ((,class (:foreground ,magenta :weight bold :underline ,darkcyan))))
-   `(cursor ((,class (:background ,cyan))))
+   `(cursor ((,class (:background ,teal))))
    `(default ((,class (:background ,bg :foreground ,fg))))
    `(error ((,class (:foreground ,red))))
    `(fringe ((,class (:foreground ,caribbean4))))
@@ -322,10 +320,10 @@ Sourced other themes to get information about font faces for packages.")
 
 ;;;; avy
    `(avy-background-face ((,class (:foreground ,caribbean5))))
-   `(avy-lead-face ((,class (:background ,cyan :foreground ,bg :distant-foreground ,fg :weight bold))))
-   `(avy-lead-face-0 ((,class (:background ,cyan :foreground ,bg :distant-foreground ,fg :weight bold))))
-   `(avy-lead-face-1 ((,class (:background ,cyan :foreground ,bg :distant-foreground ,fg :weight bold))))
-   `(avy-lead-face-2 ((,class (:background ,cyan :foreground ,bg :distant-foreground ,fg :weight bold))))
+   `(avy-lead-face ((,class (:background ,teal :foreground ,black :distant-foreground ,fg :weight bold))))
+   `(avy-lead-face-0 ((,class (:background ,teal :foreground ,black :distant-foreground ,fg :weight bold))))
+   `(avy-lead-face-1 ((,class (:background ,teal :foreground ,black :distant-foreground ,fg :weight bold))))
+   `(avy-lead-face-2 ((,class (:background ,teal :foreground ,black :distant-foreground ,fg :weight bold))))
 
 ;;;; bookmark+
    `(bmkp-*-mark ((,class (:foreground ,bg :background ,yellow))))
@@ -1167,7 +1165,7 @@ Sourced other themes to get information about font faces for packages.")
    `(mu4e-link-face ((,class (:foreground ,cyan))))
    `(mu4e-replied-face ((,class (:foreground ,green))))
    `(mu4e-title-face ((,class (:foreground ,teal :weight bold))))
-   `(mu4e-unread-face ((,class (:foreground ,red :weight bold))))
+   `(mu4e-unread-face ((,class (:foreground ,darkred :weight bold))))
 
 ;;;; mu4e-column-faces
    `(mu4e-column-faces-date ((,class (:foreground ,blue))))
