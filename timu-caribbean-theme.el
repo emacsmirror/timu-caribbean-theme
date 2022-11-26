@@ -78,6 +78,81 @@
   :group 'faces
   :prefix "timu-caribbean-")
 
+(defface timu-caribbean-grey-face
+  '((t nil))
+  "Custom basic grey `timu-caribbean-theme' face."
+  :group 'timu-caribbean-theme)
+
+(defface timu-caribbean-red-face
+  '((t nil))
+  "Custom basic red `timu-caribbean-theme' face."
+  :group 'timu-caribbean-theme)
+
+(defface timu-caribbean-darkred-face
+  '((t nil))
+  "Custom basic darkred `timu-caribbean-theme' face."
+  :group 'timu-caribbean-theme)
+
+(defface timu-caribbean-orange-face
+  '((t nil))
+  "Custom basic orange `timu-caribbean-theme' face."
+  :group 'timu-caribbean-theme)
+
+(defface timu-caribbean-green-face
+  '((t nil))
+  "Custom basic green `timu-caribbean-theme' face."
+  :group 'timu-caribbean-theme)
+
+(defface timu-caribbean-blue-face
+  '((t nil))
+  "Custom basic blue `timu-caribbean-theme' face."
+  :group 'timu-caribbean-theme)
+
+(defface timu-caribbean-magenta-face
+  '((t nil))
+  "Custom basic magenta `timu-caribbean-theme' face."
+  :group 'timu-caribbean-theme)
+
+(defface timu-caribbean-teal-face
+  '((t nil))
+  "Custom basic teal `timu-caribbean-theme' face."
+  :group 'timu-caribbean-theme)
+
+(defface timu-caribbean-yellow-face
+  '((t nil))
+  "Custom basic yellow `timu-caribbean-theme' face."
+  :group 'timu-caribbean-theme)
+
+(defface timu-caribbean-darkblue-face
+  '((t nil))
+  "Custom basic darkblue `timu-caribbean-theme' face."
+  :group 'timu-caribbean-theme)
+
+(defface timu-caribbean-purple-face
+  '((t nil))
+  "Custom basic purple `timu-caribbean-theme' face."
+  :group 'timu-caribbean-theme)
+
+(defface timu-caribbean-cyan-face
+  '((t nil))
+  "Custom basic cyan `timu-caribbean-theme' face."
+  :group 'timu-caribbean-theme)
+
+(defface timu-caribbean-darkcyan-face
+  '((t nil))
+  "Custom basic darkcyan `timu-caribbean-theme' face."
+  :group 'timu-caribbean-theme)
+
+(defface timu-caribbean-black-face
+  '((t nil))
+  "Custom basic black `timu-caribbean-theme' face."
+  :group 'timu-caribbean-theme)
+
+(defface timu-caribbean-white-face
+  '((t nil))
+  "Custom basic white `timu-caribbean-theme' face."
+  :group 'timu-caribbean-theme)
+
 (defface timu-caribbean-default-face
   '((t nil))
   "Custom basic default `timu-caribbean-theme' face."
@@ -165,6 +240,21 @@ Sourced other themes to get information about font faces for packages.")
 ;;; Custom faces
 
 ;;;; timu-caribbean-faces
+   `(timu-caribbean-grey-face ((,class (:foreground ,grey))))
+   `(timu-caribbean-red-face ((,class (:foreground ,red))))
+   `(timu-caribbean-darkred-face ((,class (:foreground ,darkred))))
+   `(timu-caribbean-orange-face ((,class (:foreground ,orange))))
+   `(timu-caribbean-green-face ((,class (:foreground ,green))))
+   `(timu-caribbean-blue-face ((,class (:foreground ,blue))))
+   `(timu-caribbean-magenta-face ((,class (:foreground ,magenta))))
+   `(timu-caribbean-teal-face ((,class (:foreground ,teal))))
+   `(timu-caribbean-yellow-face ((,class (:foreground ,yellow))))
+   `(timu-caribbean-darkblue-face ((,class (:foreground ,darkblue))))
+   `(timu-caribbean-purple-face ((,class (:foreground ,purple))))
+   `(timu-caribbean-cyan-face ((,class (:foreground ,cyan))))
+   `(timu-caribbean-darkcyan-face ((,class (:foreground ,darkcyan))))
+   `(timu-caribbean-black-face ((,class (:foreground ,black))))
+   `(timu-caribbean-white-face ((,class (:foreground ,white))))
    `(timu-caribbean-default-face ((,class (:background ,bg :foreground ,fg))))
    `(timu-caribbean-bold-face ((,class (:weight bold :foreground ,white))))
    `(timu-caribbean-bold-face-italic ((,class (:weight bold :slant italic :foreground ,white))))
