@@ -350,6 +350,11 @@ Sourced other themes to get information about font faces for packages.")
    `(all-the-icons-red-alt ((,class (:foreground ,red))))
    `(all-the-icons-silver ((,class (:foreground ,grey))))
    `(all-the-icons-yellow ((,class (:foreground ,yellow))))
+   `(all-the-icons-ibuffer-mode-face ((,class (:foreground ,teal))))
+   `(all-the-icons-ibuffer-dir-face ((,class (:foreground ,cyan))))
+   `(all-the-icons-ibuffer-file-face ((,class (:foreground ,blue))))
+   `(all-the-icons-ibuffer-icon-face ((,class (:foreground ,magenta))))
+   `(all-the-icons-ibuffer-size-face ((,class (:foreground ,yellow))))
 
 ;;;; all-the-icons-dired
    `(all-the-icons-dired-dir-face ((,class (:foreground ,fg-other))))
@@ -521,7 +526,7 @@ Sourced other themes to get information about font faces for packages.")
    `(compilation-warning ((,class (:foreground ,yellow :slant italic))))
 
 ;;;; consult
-   `(consult-file ((,class (:foreground ,darkblue))))
+   `(consult-file ((,class (:foreground ,blue))))
 
 ;;;; corfu
    `(corfu-bar ((,class (:background ,bg-other :foreground ,fg))))
@@ -1191,6 +1196,11 @@ Sourced other themes to get information about font faces for packages.")
 ;;;; marginalia
    `(marginalia-documentation ((,class (:foreground ,blue))))
    `(marginalia-file-name ((,class (:foreground ,blue))))
+   `(marginalia-size ((,class (:foreground ,yellow))))
+   `(marginalia-modified ((,class (:foreground ,red))))
+   `(marginalia-file-priv-read ((,class (:foreground ,green))))
+   `(marginalia-file-priv-write ((,class (:foreground ,yellow))))
+   `(marginalia-file-priv-exec ((,class (:foreground ,red))))
 
 ;;;; markdown-mode
    `(markdown-blockquote-face ((,class (:foreground ,caribbean5 :slant italic))))
