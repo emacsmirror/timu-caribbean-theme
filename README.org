@@ -1,4 +1,4 @@
-#+TITLE: timu-caribbean-theme
+#+TITLE: TIMU-CARIBBEAN-THEME
 #+AUTHOR: Aimé Bertrand
 #+DATE: [2022-11-13 Sun]
 #+LANGUAGE: en
@@ -72,6 +72,17 @@ You can choose your own scaling values as well. The following is a somewhat exag
   (customize-set-variable 'timu-caribbean-scale-org-level-1 1.8)
   (customize-set-variable 'timu-caribbean-scale-org-level-2 1.4)
   (customize-set-variable 'timu-caribbean-scale-org-level-3 1.2)
+#+end_src
+
+** "Intense" colors for org-mode
+To emphasize some elements in org-mode. You can set a variable to make some faces more "intense".
+
+#+html: <p align="center"><img src="img/timu-caribbean-intense.png" width="100%"/></p>
+
+By default the intense colors are turned off. To turn this on add the following to your =~/.emacs.d/init.el= or =~/.emacs=:
+
+#+begin_src emacs-lisp
+  (customize-set-variable 'timu-caribbean-org-insense-colors t)
 #+end_src
 
 * License

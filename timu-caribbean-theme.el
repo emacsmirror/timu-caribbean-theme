@@ -6,7 +6,7 @@
 ;; Maintainer: Aimé Bertrand <aime.bertrand@macowners.club>
 ;; Created: 2022-11-13
 ;; Keywords: faces themes
-;; Version: 1.2
+;; Version: 1.3
 ;; Package-Requires: ((emacs "27.1"))
 ;; Homepage: https://gitlab.com/aimebertrand/timu-caribbean-theme
 
@@ -89,6 +89,14 @@
 ;;         (customize-set-variable 'timu-caribbean-scale-org-level-1 1.8)
 ;;         (customize-set-variable 'timu-caribbean-scale-org-level-2 1.4)
 ;;         (customize-set-variable 'timu-caribbean-scale-org-level-3 1.2)
+;;
+;;   B. "Intense" colors for org-mode
+;;     To emphasize some elements in org-mode.
+;;     You can set a variable to make some faces more "intense".
+;;
+;;     By default the intense colors are turned off.
+;;     To turn this on add the following to your =~/.emacs.d/init.el= or =~/.emacs=:
+;;       (customize-set-variable 'timu-caribbean-org-insense-colors t)
 
 
 ;;; Code:
@@ -259,6 +267,17 @@ Uses `timu-caribbean-scale-faces' for the value of CONTROL."
    ((eq t control) (list :height default-height))
    ((eq nil control) (list :height 1.0))
    (t nil)))
+
+(defcustom timu-caribbean-org-insense-colors nil
+  "Variable to control \"intensity\" of `org-mode' colors."
+  :type 'boolean
+  :group 'timu-caribbean-theme)
+
+(defun timu-caribbean-set-intense-org-colors (olcolor bgcolor)
+  "Function Adding intense colors to `org-mode'.
+OLCOLOR changes the `overline' color and BGCOLOR changes the `background' color."
+  (if (eq t timu-caribbean-org-insense-colors)
+      (list :overline olcolor :background bgcolor)))
 
 (deftheme timu-caribbean
   "Color theme with cyan as a dominant color.
@@ -1462,17 +1481,17 @@ Sourced other themes to get information about font faces for packages.")
    `(org-archived ((,class (:foreground ,caribbean5))))
    `(org-block ((,class (:foreground ,caribbean8 :background ,bg-org :extend t))))
    `(org-block-background ((,class (:background ,bg-org :extend t))))
-   `(org-block-begin-line ((,class (:foreground ,caribbean5 :slant italic :background ,bg-org :extend t))))
-   `(org-block-end-line ((,class (:foreground ,caribbean5 :slant italic :background ,bg-org :extend t))))
+   `(org-block-begin-line ((,class (:foreground ,caribbean5 :slant italic :background ,bg-org :extend t ,@(timu-caribbean-set-intense-org-colors bg bg-other)))))
+   `(org-block-end-line ((,class (:foreground ,caribbean5 :slant italic :background ,bg-org :extend t ,@(timu-caribbean-set-intense-org-colors bg-other bg-other)))))
    `(org-checkbox ((,class (:foreground ,green :background ,bg-org :weight bold))))
    `(org-checkbox-statistics-done ((,class (:foreground ,caribbean5 :background ,bg-org :weight bold))))
    `(org-checkbox-statistics-todo ((,class (:foreground ,green :background ,bg-org :weight bold))))
-   `(org-code ((,class (:foreground ,cyan))))
+   `(org-code ((,class (:foreground ,cyan ,@(timu-caribbean-set-intense-org-colors bg bg-other)))))
    `(org-date ((,class (:foreground ,yellow :background ,bg-org))))
    `(org-default ((,class (:background ,bg :foreground ,fg))))
-   `(org-document-info ((,class (:foreground ,teal ,@(timu-caribbean-do-scale timu-caribbean-scale-org-document-info 1.2)))))
+   `(org-document-info ((,class (:foreground ,teal ,@(timu-caribbean-do-scale timu-caribbean-scale-org-document-info 1.2) ,@(timu-caribbean-set-intense-org-colors bg bg-other)))))
    `(org-document-info-keyword ((,class (:foreground ,caribbean5))))
-   `(org-document-title ((,class (:foreground ,teal :weight bold ,@(timu-caribbean-do-scale timu-caribbean-scale-org-document-info 1.3)))))
+   `(org-document-title ((,class (:foreground ,teal :weight bold ,@(timu-caribbean-do-scale timu-caribbean-scale-org-document-info 1.3) ,@(timu-caribbean-set-intense-org-colors teal bg-other)))))
    `(org-done ((,class (:foreground ,caribbean5 :weight bold))))
    `(org-ellipsis ((,class (:foreground ,grey))))
    `(org-footnote ((,class (:foreground ,cyan))))
@@ -1480,14 +1499,14 @@ Sourced other themes to get information about font faces for packages.")
    `(org-headline-done ((,class (:foreground ,caribbean5))))
    `(org-hide ((,class (:foreground ,bg))))
    `(org-latex-and-related ((,class (:foreground ,caribbean8 :weight bold))))
-   `(org-level-1 ((,class (:foreground ,blue :weight ultra-bold ,@(timu-caribbean-do-scale timu-caribbean-scale-org-document-info 1.3)))))
-   `(org-level-2 ((,class (:foreground ,red :weight bold ,@(timu-caribbean-do-scale timu-caribbean-scale-org-document-info 1.2)))))
-   `(org-level-3 ((,class (:foreground ,teal :weight bold ,@(timu-caribbean-do-scale timu-caribbean-scale-org-document-info 1.1)))))
-   `(org-level-4 ((,class (:foreground ,cyan))))
-   `(org-level-5 ((,class (:foreground ,green))))
-   `(org-level-6 ((,class (:foreground ,orange))))
-   `(org-level-7 ((,class (:foreground ,purple))))
-   `(org-level-8 ((,class (:foreground ,fg))))
+   `(org-level-1 ((,class (:foreground ,blue :weight ultra-bold ,@(timu-caribbean-do-scale timu-caribbean-scale-org-document-info 1.3) ,@(timu-caribbean-set-intense-org-colors blue bg-other)))))
+   `(org-level-2 ((,class (:foreground ,red :weight bold ,@(timu-caribbean-do-scale timu-caribbean-scale-org-document-info 1.2) ,@(timu-caribbean-set-intense-org-colors red bg-other)))))
+   `(org-level-3 ((,class (:foreground ,teal :weight bold ,@(timu-caribbean-do-scale timu-caribbean-scale-org-document-info 1.1) ,@(timu-caribbean-set-intense-org-colors teal bg-other)))))
+   `(org-level-4 ((,class (:foreground ,cyan ,@(timu-caribbean-set-intense-org-colors cyan bg-org)))))
+   `(org-level-5 ((,class (:foreground ,green ,@(timu-caribbean-set-intense-org-colors green bg-org)))))
+   `(org-level-6 ((,class (:foreground ,orange ,@(timu-caribbean-set-intense-org-colors orange bg-org)))))
+   `(org-level-7 ((,class (:foreground ,purple ,@(timu-caribbean-set-intense-org-colors purple bg-org)))))
+   `(org-level-8 ((,class (:foreground ,fg ,@(timu-caribbean-set-intense-org-colors fg bg-org)))))
    `(org-link ((,class (:foreground ,magenta :underline t))))
    `(org-list-dt ((,class (:foreground ,cyan))))
    `(org-meta-line ((,class (:foreground ,caribbean5))))
@@ -1498,7 +1517,7 @@ Sourced other themes to get information about font faces for packages.")
    `(org-table ((,class (:foreground ,red))))
    `(org-tag ((,class (:foreground ,caribbean5 :weight normal))))
    `(org-todo ((,class (:foreground ,green :weight bold))))
-   `(org-verbatim ((,class (:foreground ,teal))))
+   `(org-verbatim ((,class (:foreground ,teal ,@(timu-caribbean-set-intense-org-colors bg bg-other)))))
    `(org-warning ((,class (:foreground ,yellow))))
 
 ;;;; org-pomodoro
