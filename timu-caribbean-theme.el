@@ -6,7 +6,7 @@
 ;; Maintainer: Aimé Bertrand <aime.bertrand@macowners.club>
 ;; Created: 2022-11-13
 ;; Keywords: faces themes
-;; Version: 1.1
+;; Version: 1.2
 ;; Package-Requires: ((emacs "27.1"))
 ;; Homepage: https://gitlab.com/aimebertrand/timu-caribbean-theme
 
@@ -57,19 +57,39 @@
 ;;         (load-theme 'timu-caribbean t))
 ;;
 ;; II. Configuration
-;;   You can now scale (up) some faces (in `org-mode' for now):
+;;   A. Scaling
+;;     You can now scale some faces (in `org-mode' for now):
 ;;
-;;   - `org-document-info'
-;;   - `org-document-title'
-;;   - `org-level-1'
-;;   - `org-level-2'
-;;   - `org-level-3'
+;;     - `org-document-info'
+;;     - `org-document-title'
+;;     - `org-level-1'
+;;     - `org-level-2'
+;;     - `org-level-3'
 ;;
-;;   More to follow in the future.
+;;     More to follow in the future.
 ;;
-;;   By default the scaling is turned off.
-;;   To setup the scaling add the following to your `~/.emacs.d/init.el' or `~/.emacs':
-;;     (customize-set-variable 'timu-caribbean-scale-faces t)
+;;     By default the scaling is turned off.
+;;     To setup the scaling add the following to your `~/.emacs.d/init.el' or `~/.emacs':
+;;
+;;     1. Default scaling
+;;       This will turn on default values of scaling in the theme.
+;;
+;;         (customize-set-variable 'timu-caribbean-scale-org-document-title t)
+;;         (customize-set-variable 'timu-caribbean-scale-org-document-info t)
+;;         (customize-set-variable 'timu-caribbean-scale-org-level-1 t)
+;;         (customize-set-variable 'timu-caribbean-scale-org-level-2 t)
+;;         (customize-set-variable 'timu-caribbean-scale-org-level-3 t)
+;;
+;;     2. Custom scaling
+;;       You can choose your own scaling values as well.
+;;       The following is a somewhat exaggerated example.
+;;
+;;         (customize-set-variable 'timu-caribbean-scale-org-document-title 1.8)
+;;         (customize-set-variable 'timu-caribbean-scale-org-document-info 1.4)
+;;         (customize-set-variable 'timu-caribbean-scale-org-level-1 1.8)
+;;         (customize-set-variable 'timu-caribbean-scale-org-level-2 1.4)
+;;         (customize-set-variable 'timu-caribbean-scale-org-level-3 1.2)
+
 
 ;;; Code:
 
@@ -186,17 +206,59 @@
   "Custom basic strike-through `timu-caribbean-theme' face."
   :group 'timu-caribbean-theme)
 
-(defcustom timu-caribbean-scale-faces nil
-  "Variable to control the scale of select faces."
-  :type 'boolean
+(defcustom timu-caribbean-scale-org-document-info nil
+  "Variable to control the scale of the `org-document-info' faces.
+Possible Values: t, number or nil. When t, use theme default height."
+  :type '(choice
+          (const :tag "No scaling" nil)
+          (const :tag "Theme default scaling" t)
+          (number :tag "Your custom scaling"))
   :group 'timu-caribbean-theme)
 
-(defun timu-caribbean-do-scale (face-height)
+(defcustom timu-caribbean-scale-org-document-title nil
+  "Variable to control the scale of the `org-document-title' faces.
+Possible Values: t, number or nil. When t, use theme default height."
+  :type '(choice
+          (const :tag "No scaling" nil)
+          (const :tag "Theme default scaling" t)
+          (number :tag "Your custom scaling"))
+  :group 'timu-caribbean-theme)
+
+(defcustom timu-caribbean-scale-org-level-1 nil
+  "Variable to control the scale of the `org-level-1' faces.
+Possible Values: t, number or nil. When t, use theme default height."
+  :type '(choice
+          (const :tag "No scaling" nil)
+          (const :tag "Theme default scaling" t)
+          (number :tag "Your custom scaling"))
+  :group 'timu-caribbean-theme)
+
+(defcustom timu-caribbean-scale-org-level-2 nil
+  "Variable to control the scale of the `org-level-2' faces.
+Possible Values: t, number or nil. When t, use theme default height."
+  :type '(choice
+          (const :tag "No scaling" nil)
+          (const :tag "Theme default scaling" t)
+          (number :tag "Your custom scaling"))
+  :group 'timu-caribbean-theme)
+
+(defcustom timu-caribbean-scale-org-level-3 nil
+  "Variable to control the scale of the `org-level-3' faces.
+Possible Values: t, number or nil. When t, use theme default height."
+  :type '(choice
+          (const :tag "No scaling" nil)
+          (const :tag "Theme default scaling" t)
+          (number :tag "Your custom scaling"))
+  :group 'timu-caribbean-theme)
+
+(defun timu-caribbean-do-scale (control default-height)
   "Function for scaling the face to the FACE-HEIGHT.
-Uses `timu-caribbean-scale-faces' for conditional."
-  (if (eq t timu-caribbean-scale-faces)
-      (list :height face-height)
-    (list :height 1.0)))
+Uses `timu-caribbean-scale-faces' for the value of CONTROL."
+  (cond
+   ((numberp control) (list :height control))
+   ((eq t control) (list :height default-height))
+   ((eq nil control) (list :height 1.0))
+   (t nil)))
 
 (deftheme timu-caribbean
   "Color theme with cyan as a dominant color.
@@ -1408,9 +1470,9 @@ Sourced other themes to get information about font faces for packages.")
    `(org-code ((,class (:foreground ,cyan))))
    `(org-date ((,class (:foreground ,yellow :background ,bg-org))))
    `(org-default ((,class (:background ,bg :foreground ,fg))))
-   `(org-document-info ((,class (:foreground ,teal ,@(timu-caribbean-do-scale 1.2)))))
+   `(org-document-info ((,class (:foreground ,teal ,@(timu-caribbean-do-scale timu-caribbean-scale-org-document-info 1.2)))))
    `(org-document-info-keyword ((,class (:foreground ,caribbean5))))
-   `(org-document-title ((,class (:foreground ,teal :weight bold ,@(timu-caribbean-do-scale 1.3)))))
+   `(org-document-title ((,class (:foreground ,teal :weight bold ,@(timu-caribbean-do-scale timu-caribbean-scale-org-document-info 1.3)))))
    `(org-done ((,class (:foreground ,caribbean5 :weight bold))))
    `(org-ellipsis ((,class (:foreground ,grey))))
    `(org-footnote ((,class (:foreground ,cyan))))
@@ -1418,9 +1480,9 @@ Sourced other themes to get information about font faces for packages.")
    `(org-headline-done ((,class (:foreground ,caribbean5))))
    `(org-hide ((,class (:foreground ,bg))))
    `(org-latex-and-related ((,class (:foreground ,caribbean8 :weight bold))))
-   `(org-level-1 ((,class (:foreground ,blue :weight ultra-bold ,@(timu-caribbean-do-scale 1.3)))))
-   `(org-level-2 ((,class (:foreground ,red :weight bold ,@(timu-caribbean-do-scale 1.2)))))
-   `(org-level-3 ((,class (:foreground ,teal :weight bold ,@(timu-caribbean-do-scale 1.1)))))
+   `(org-level-1 ((,class (:foreground ,blue :weight ultra-bold ,@(timu-caribbean-do-scale timu-caribbean-scale-org-document-info 1.3)))))
+   `(org-level-2 ((,class (:foreground ,red :weight bold ,@(timu-caribbean-do-scale timu-caribbean-scale-org-document-info 1.2)))))
+   `(org-level-3 ((,class (:foreground ,teal :weight bold ,@(timu-caribbean-do-scale timu-caribbean-scale-org-document-info 1.1)))))
    `(org-level-4 ((,class (:foreground ,cyan))))
    `(org-level-5 ((,class (:foreground ,green))))
    `(org-level-6 ((,class (:foreground ,orange))))
@@ -1451,9 +1513,9 @@ Sourced other themes to get information about font faces for packages.")
    `(org-ref-ref-face ((,class (:foreground ,red :underline t :weight bold))))
 
 ;;;; outline
-   `(outline-1 ((,class (:foreground ,blue :weight ultra-bold ,@(timu-caribbean-do-scale 1.3)))))
-   `(outline-2 ((,class (:foreground ,red :weight bold ,@(timu-caribbean-do-scale 1.2)))))
-   `(outline-3 ((,class (:foreground ,teal :weight bold ,@(timu-caribbean-do-scale 1.1)))))
+   `(outline-1 ((,class (:foreground ,blue :weight ultra-bold ,@(timu-caribbean-do-scale timu-caribbean-scale-org-document-info 1.2)))))
+   `(outline-2 ((,class (:foreground ,red :weight bold ,@(timu-caribbean-do-scale timu-caribbean-scale-org-document-info 1.2)))))
+   `(outline-3 ((,class (:foreground ,teal :weight bold ,@(timu-caribbean-do-scale timu-caribbean-scale-org-document-info 1.1)))))
    `(outline-4 ((,class (:foreground ,cyan))))
    `(outline-5 ((,class (:foreground ,green))))
    `(outline-6 ((,class (:foreground ,orange))))
