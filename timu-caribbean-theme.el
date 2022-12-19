@@ -6,7 +6,7 @@
 ;; Maintainer: Aimé Bertrand <aime.bertrand@macowners.club>
 ;; Created: 2022-11-13
 ;; Keywords: faces themes
-;; Version: 1.3
+;; Version: 1.4
 ;; Package-Requires: ((emacs "27.1"))
 ;; Homepage: https://gitlab.com/aimebertrand/timu-caribbean-theme
 
@@ -90,8 +90,8 @@
 ;;         (customize-set-variable 'timu-caribbean-scale-org-level-2 1.4)
 ;;         (customize-set-variable 'timu-caribbean-scale-org-level-3 1.2)
 ;;
-;;   B. "Intense" colors for org-mode
-;;     To emphasize some elements in org-mode.
+;;   B. "Intense" colors for `org-mode'
+;;     To emphasize some elements in `org-mode'.
 ;;     You can set a variable to make some faces more "intense".
 ;;
 ;;     By default the intense colors are turned off.
@@ -286,6 +286,24 @@ OVERLINE-COLOR changes the `overline' color.
 BACKGROUND-COLOR changes the `background' color."
   (if (eq t timu-caribbean-org-intense-colors)
       (list :overline overline-color :background background-color)))
+
+(defcustom timu-caribbean-mode-line-border nil
+  "Variable to control the border of `mode-line'.
+With a value of t the mode-line has a border."
+  :type 'boolean
+  :group 'timu-caribbean-theme)
+
+(defun timu-caribbean-set-mode-line-active-border (boxcolor)
+  "Function adding a border to the `mode-line' of the active window.
+BOXCOLOR supplies the border color."
+  (if (eq t timu-caribbean-mode-line-border)
+        (list :box boxcolor)))
+
+(defun timu-caribbean-set-mode-line-inactive-border (boxcolor)
+  "Function adding a border to the `mode-line' of the inactive window.
+BOXCOLOR supplies the border color."
+  (if (eq t timu-caribbean-mode-line-border)
+        (list :box boxcolor)))
 
 (deftheme timu-caribbean
   "Color theme with cyan as a dominant color.
@@ -1348,11 +1366,11 @@ Sourced other themes to get information about font faces for packages.")
    `(mmm-special-submode-face ((,class (:background ,green))))
 
 ;;;; mode-line
-   `(mode-line ((,class (:background ,bg-other :foreground ,fg :distant-foreground ,bg))))
+   `(mode-line ((,class (,@(timu-caribbean-set-mode-line-active-border caribbean4) :background ,bg-other :foreground ,fg :distant-foreground ,bg))))
    `(mode-line-buffer-id ((,class (:weight bold))))
    `(mode-line-emphasis ((,class (:foreground ,magenta :weight bold :underline ,darkcyan))))
    `(mode-line-highlight ((,class (:foreground ,magenta :weight bold :underline ,darkcyan))))
-   `(mode-line-inactive ((,class (:background ,bg-other :foreground ,caribbean3 :distant-foreground ,bg-other))))
+   `(mode-line-inactive ((,class (,@(timu-caribbean-set-mode-line-inactive-border caribbean2) :background ,bg-other :foreground ,caribbean3 :distant-foreground ,bg-other))))
 
 ;;;; mu4e
    `(mu4e-forwarded-face ((,class (:foreground ,darkblue))))
