@@ -633,6 +633,9 @@ Sourced other themes to get information about font faces for packages.")
    `(circe-prompt-face ((,class (:weight bold :foreground ,teal))))
    `(circe-server-face ((,class (:foreground ,caribbean5))))
 
+;;;; column-enforce-mode
+   `(column-enforce-face ((,class (:foreground ,magenta :underline t))))
+
 ;;;; company
    `(company-preview ((,class (:background ,bg-other :foreground ,caribbean5))))
    `(company-preview-common ((,class (:background ,caribbean3 :foreground ,cyan))))
