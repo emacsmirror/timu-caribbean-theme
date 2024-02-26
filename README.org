@@ -94,12 +94,12 @@ By default the border is turned off. To turn this on add the following to your =
   (customize-set-variable 'timu-caribbean-mode-line-border t)
 #+end_src
 
-** Utility functions
-*** Toggle between intense and non intense colors for `org-mode'
+* Utility functions
+** Toggle between intense and non intense colors for `org-mode'
 
 M-x =timu-caribbean-toggle-org-colors-intensity= RET.
 
-*** Toggle between borders and no borders for the `mode-line'
+** Toggle between borders and no borders for the `mode-line'
 
 M-x =timu-caribbean-toggle-mode-line-border= RET.
 
