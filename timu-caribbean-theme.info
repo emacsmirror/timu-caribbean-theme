@@ -119,9 +119,6 @@ Custom scaling
     (customize-set-variable 'timu-caribbean-scale-org-level-2 1.4)
     (customize-set-variable 'timu-caribbean-scale-org-level-3 1.2)
 
-
-File: timu-caribbean-theme.info,  Node: "Intense" colors for org-mode,  Next: Border for the mode-line,  Prev: Scaling,  Up: Configuration
-
 "Intense" colors for org-mode
 -----------------------------
 
@@ -142,6 +139,9 @@ By default the border is turned off.  To turn this on add the following to your
 ‘~/.emacs.d/init.el’ or ‘~/.emacs’:
 
     (customize-set-variable 'timu-caribbean-mode-line-border t)
+
+
+File: timu-caribbean-theme.info,  Node: Utility functions,  Next: Supported major modes,  Prev: Configuration,  Up: Top
 
 3 Utility functions
 *******************
@@ -200,8 +200,8 @@ Tag table:
 Node: Top263
 Node: Installation1813
 Node: Configuration2466
-Node: "Intense" colors for org-mode3836
-Node: Supported major modes4992
+Node: Utility functions4481
+Node: Supported major modes4973
 
 End tag table
 
